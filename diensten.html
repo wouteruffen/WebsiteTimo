@@ -181,60 +181,94 @@
     <!-- Service End -->
 
 
-    <!-- Appointment Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="border-start border-5 border-primary ps-4 mb-5">
-                        <h6 class="text-body text-uppercase mb-2">Afspraak</h6>
-                        <h1 class="display-6 mb-0">Neem contact op met Bouwbedrijf Kruize</h1>
-                    </div>
-                    <p class="mb-0">Heb je plannen voor een verbouwing, renovatie of andere klus? Neem gerust contact op om de mogelijkheden te bespreken. We denken graag met je mee en kijken samen naar een passende aanpak.</p>
+  <!-- Appointment Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="border-start border-5 border-primary ps-4 mb-5">
+                    <h6 class="text-body text-uppercase mb-2">Afspraak</h6>
+                    <h1 class="display-6 mb-0">Neem contact op met Bouwbedrijf Kruize</h1>
                 </div>
-                <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-sm-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control bg-light border-0" id="gname" placeholder="Gurdian Name">
-                                    <label for="gname">Jouw naam</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control bg-light border-0" id="gmail" placeholder="Gurdian Email">
-                                    <label for="gmail">Jouw email</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control bg-light border-0" id="cname" placeholder="Child Name">
-                                    <label for="cname">Jouw telefoonnummer</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control bg-light border-0" id="cage" placeholder="Child Age">
-                                    <label for="cage">Onderwerp</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                    <label for="message">Bericht</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Verstuur e-mail</button>
+                <p class="mb-0">Heb je plannen voor een verbouwing, renovatie of andere klus? Neem gerust contact op om de mogelijkheden te bespreken. We denken graag met je mee en kijken samen naar een passende aanpak.</p>
+            </div>
+            <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <form id="contactForm" action="https://formspree.io/f/mnjoddwg" method="POST">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control bg-light border-0" id="gname" name="naam" placeholder="Jouw naam" required>
+                                <label for="gname">Jouw naam</label>
                             </div>
                         </div>
-                    </form>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control bg-light border-0" id="gmail" name="email" placeholder="Jouw email" required>
+                                <label for="gmail">Jouw email</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control bg-light border-0" id="cname" name="telefoon" placeholder="Jouw telefoonnummer">
+                                <label for="cname">Jouw telefoonnummer</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control bg-light border-0" id="cage" name="onderwerp" placeholder="Onderwerp">
+                                <label for="cage">Onderwerp</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control bg-light border-0" placeholder="Bericht" id="message" name="bericht" style="height: 100px" required></textarea>
+                                <label for="message">Bericht</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Verstuur e-mail</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="formMessage" style="display:none; margin-top:20px;" class="alert alert-success">
+                    Bericht verzonden! We nemen zo snel mogelijk contact met je op.
                 </div>
             </div>
         </div>
     </div>
-    <!-- Appointment End -->
+</div>
+<!-- Appointment End -->
+
+<script>
+const form = document.getElementById("contactForm");
+const message = document.getElementById("formMessage");
+
+form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    const response = await fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        form.reset();
+        message.style.display = "block";
+
+        setTimeout(() => {
+            message.style.display = "none";
+        }, 5000);
+    } else {
+        alert("Er ging iets mis. Probeer het opnieuw.");
+    }
+});
+</script>
 
 
       <!-- Footer Start -->
