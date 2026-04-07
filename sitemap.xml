@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://www.bouwbedrijfkruize.nl/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bouwbedrijfkruize.nl/diensten.html</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bouwbedrijfkruize.nl/bouw.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bouwbedrijfkruize.nl/aanbouw-uitbouw.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bouwbedrijfkruize.nl/advies.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bouwbedrijfkruize.nl/installatie.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bouwbedrijfkruize.nl/tegelwerk.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bouwbedrijfkruize.nl/afwerking.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bouwbedrijfkruize.nl/over-ons.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bouwbedrijfkruize.nl/contact.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
